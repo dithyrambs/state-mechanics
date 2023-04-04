@@ -2,7 +2,7 @@
 
 ## Overview
 
-StateMechanics is a state machine that was designed specifically to fill the gap between easy-to-setup but unscalable method-based state machines, and the laborious-but-more-correct class based state machines. If only there was a way to quickly prototype adding new states without making new files or even needing to manually add the newly added states. StateMechanics solves all that by using [nested types](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/nested-types) and then instantiating and auto-caching them. And if your inner classes ever get too unwieldy, you can alway pull them into separate classes later.
+StateMechanics is a state machine that was designed specifically to fill the gap between easy-to-setup but unscalable method-based state machines, and the laborious-but-more-correct class based state machines. If only there was a way to quickly prototype adding new states without making new files or even needing to manually add the newly created states. StateMechanics solves all that by using [nested types](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/nested-types) and then instantiating and auto-caching them. And if your inner classes ever get too unwieldy, you can alway pull them into separate classes later.
 
 ## Setup
 
