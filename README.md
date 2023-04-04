@@ -69,6 +69,8 @@ From within a state, you can access any property or method of a mechanic:
 
     mechanic.SomeMethod();
 
+Here's a little secret though: inside nested classes, you can also access private and protected members of the containing class. While that's super neat and useful, don't rely on it if you think you might ever refactor your inner classes to be separate from their container.  
+
 ## Intra and Inter State Communication
 
 The ‘mechanic’ paradigm is meant as a quick tool for prototyping, but isn’t in itself a complete solution. Consider using a blackboard system of some kind to pass information not just between your states, but between separate state machines. Additionally, if your states need to change based on external variables, perhaps consider some kind of messaging system that disseminates messages down to the currently active state. 
