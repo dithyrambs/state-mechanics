@@ -1,49 +1,75 @@
-﻿namespace StateMechanics
+namespace StateMechanics
 {
     public abstract class State<T> where T : class
     {
-        protected T Mechanic;
+        // The state machine that this state belongs to.
+        private StateMachine<T> _stateMachine;
+        
+        private T _mechanic;
 
-        private StateMachine<T> stateMachine;
+        /// <summary>
+        /// The Mechanic is the client this is operating this state's machine.
+        /// </summary>
+        public T Mechanic => _mechanic;
 
-        public void SetStateMachine(StateMachine<T> stateMachine)
+        /// <summary>
+        /// When constructing a new state, pass in its owning machine, and the client operating it.
+        /// </summary>
+        public void InitFields(StateMachine<T> stateMachine, T mechanic)
         {
-            this.stateMachine = stateMachine;
+            this._stateMachine = stateMachine;
+            this._mechanic = mechanic;
         }
 
-        public void SetMechanic(T mechanic)
-        {
-            this.Mechanic = mechanic;
-        }
-
+        /// <summary>
+        /// Virtual method called when the State is constructed and added to the machine.
+        /// </summary>
         public virtual void Init()
         {
         }
 
+        /// <summary>
+        /// Virtual method called when the state machine switches to this state.
+        /// </summary>
         public virtual void Enter()
         {
         }
 
+        /// <summary>
+        /// Virtual method called on StateMachine.Update().
+        /// </summary>
         public virtual void Update()
         {
         }
 
+        /// <summary>
+        /// Virtual method called when the StateMachine switches to another state.
+        /// </summary>
         public virtual void Exit()
         {
         }
 
+        /// <summary>
+        /// Virtual method called on Statemachine.CleanUp().
+        /// </summary>
         public virtual void CleanUp() 
         { 
         }
 
-        protected void SwitchTo<S>()
+        /// <summary>
+        /// Switches the state machine to a state of this type.
+        /// </summary>
+        protected void SwitchTo<S>() where S : State<T>
         {
-            stateMachine.SwitchTo<S>();
+            _stateMachine.SwitchTo<S>();
         }
 
+        /// <summary>
+        /// Switches the state machine to this state.
+        /// </summary>
         protected void SwitchTo(State<T> state)
         {
-            stateMachine.SwitchTo(state);
+            _stateMachine.SwitchTo(state);
         }
     }
 }
